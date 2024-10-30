@@ -4,38 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Monthsary, My Love!</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body onclick="createTouchHeart(event)">
-    <!-- Hamburger Menu Button -->
-    <button class="menu-toggle" onclick="toggleMenu()">🥀</button>
+    <button class="menu-toggle" onclick="toggleMenu()">💖</button>
 
-    <!-- Hamburger Menu Content -->
     <div class="menu" id="menu">
         <a onclick="toggleDarkMode()">Dark Mode</a>
         <a onclick="toggleMusic()">Play/Pause Music</a>
+        <a onclick="showMusicSelection()">Select Music</a>
         <a onclick="toggleMenu()">Close Menu</a>
     </div>
 
-    <!-- Background Music -->
+    <!-- Background Music Options -->
     <audio id="background-music" loop>
         <source src="Your Love - Juris _ Piano Cover by Gerard Chua(MP3_320K).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+    </audio>
+    <audio id="music-option-1" loop>
+        <source src="song1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music-option-2" loop>
+        <source src="song2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music-option-3" loop>
+        <source src="song3.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
-        <h1>Happy 4th Monthsary, My wife!🥀</h1>
-        <p>Asawa koo, finally 4th months of love, gusto kulng sabihin na salamat Kasi nag stay ka sakin ng ganon katagal, thank you kasi natitiis mo yung gantong ugali ko thank u for being understanding love, I know namn na napapagod ka din sa ugali ko but pls choose to stay wifeyy, sana kayanin natin lahat, sana mas tumagal pa tayo, stay strong to us asawa ko, hope na sana mag stay kana sakin forever asawa ko at mag stay din ako sa'yo forever asawa ko until my last breath, I found the love in you, and no different kind of love can change that because your the one for me, your always be my fav person asawa ko, alagaan mu sarili mo habang hindi pa tayo mag kasama wifeyy ko at wag papalipas ng gutom, please take care of yourself wifeyy ko, mag sstay ako sayo habang buhay wifeyy, sana ganon ka din, always remember na palaging ikaw yung pahinga ko, tahanan at mundo ko, ikaw po palagi wifeyy koo, sana ako lang din wifeyy ko, sana magtagal pa tayo wifeyy ko, sana wag mo po ako iwan, sana kahit anong pag subok dumating satin walang iwanan, sana walang sukuan, sana din po di ka po mag sawa na mahalin at intindihin po ugali ko na minsan makulit at hindi makaintindi, I'm grateful na naging girlfriend kita wifeyy koo kaya iintindihin kita habang nabubuhay ako, mahal na mahal po kita ng sobra hinding-hindi po kita iiwan kahit na anong mangyari kahit gaano pa kahirap dumaaan satin, never kita iiwan kasi ikaw at ikaw lang gusto ko, I'm scared to lose you, thank you po sa walang sawa na pag mamahal po sakin kahit minsan makulit ako at hindi makaintindi at naiinis pa po kita, thank you po sa pag intindi po sakin wifeyy ko, pero I'm trying to be a best boyfriend po sa'yo asawa ko. Sana walang mag bago satin stay strong lang asawa ko. Basta tiwala lang kaya natin to mahal na mahal kita ng maraming marami pa sa marami at mag iingat ka po palagi wifeyy ko at mag iingat din po ako para sayo aking wifeyy ko, i love you so much more asawa ko 💖 mahal na mahal po kita ng sobra-sobra 💕 Mwaaaah Mwaaaah Mwaaaah😘 Happy Monthsary ulit asawa koo stay strong to us asawa koo</p>
-        <p>You are my safe place, my world, and my everything. Happy monthsary, and here’s to many more with you by my side. I love you asawa ko 💖, always and forever💕.</p>
-        <p>I’m grateful for every moment we share, for every laugh, every memory, and even our little fights. Through all of it, my love only grows stronger. I can’t wait to spend many more months, years, and lifetimes with you.</p>
-        <p>The love I have for you can not be expressed by more words.</p>
+        <h1>Happy 4th Monthsary, My Wife!💖</h1>
+        <p>Your beautiful monthsary message goes here...</p>
         
-        <!-- Replace the src with your own image URL -->
         <img class="photo" src="https://i.postimg.cc/bJ6VsWx3/1730278298762.jpg" alt="Our special memory">
         
-        <p>You are my safe place, my world, and my everything. Happy monthsary, and here's to many more with you by my side. I love you, always and forever.</p>
-        
-        <div class="footer">With all my love, <br> Hubby</div>
+        <div class="footer">With all my love, <br> [Your Name]</div>
+    </div>
+
+    <!-- Music Selection Modal -->
+    <div class="music-selection" id="music-selection">
+        <p>Select a Song:</p>
+        <button onclick="changeMusic('music-option-1')">Song 1</button>
+        <button onclick="changeMusic('music-option-2')">Song 2</button>
+        <button onclick="changeMusic('music-option-3')">Song 3</button>
+        <button onclick="closeMusicSelection()">Close</button>
     </div>
 
     <script src="script.js"></script>
