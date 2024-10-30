@@ -1,4 +1,3 @@
-/* Basic styling for the page */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #ffd1dc, #ff99cc);
@@ -12,13 +11,11 @@ body {
     animation: fadeIn 2s forwards;
 }
 
-/* Dark mode styling */
 body.dark-mode {
     background: linear-gradient(135deg, #2e2e2e, #4e4e4e);
     color: #e0e0e0;
 }
 
-/* Container for the main content */
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -29,7 +26,6 @@ body.dark-mode {
     animation: fadeIn 2s forwards;
 }
 
-/* Title styling with glow effect */
 h1 {
     font-family: 'Cursive', sans-serif;
     font-size: 2.5em;
@@ -38,7 +34,6 @@ h1 {
     text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 105, 180, 0.5);
 }
 
-/* Paragraph text styling with glow effect */
 p {
     font-size: 1.2em;
     color: #f5f5f5;
@@ -46,7 +41,6 @@ p {
     text-shadow: 0 0 5px rgba(255, 105, 180, 0.6);
 }
 
-/* Image styling */
 .photo {
     border-radius: 15px;
     width: 100%;
@@ -56,7 +50,6 @@ p {
     animation: fadeIn 2s forwards;
 }
 
-/* Footer text with glow effect */
 .footer {
     font-size: 0.9em;
     color: #ffe6e6;
@@ -64,7 +57,6 @@ p {
     text-shadow: 0 0 5px rgba(255, 105, 180, 0.6);
 }
 
-/* Hamburger menu */
 .menu-toggle {
     position: fixed;
     top: 10px;
@@ -102,87 +94,48 @@ p {
     cursor: pointer;
 }
 
-/* Falling hearts with glow */
-.falling-heart {
+.music-selection {
     position: fixed;
-    top: -10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    z-index: 11;
+    color: #ffffff;
+    text-align: center;
+}
+
+.music-selection button {
+    margin-top: 10px;
+    color: #ff69b4;
+    background-color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.falling-heart, .touch-heart {
+    position: fixed;
     width: 20px;
     height: 20px;
     background-color: #ff69b4;
     transform: rotate(45deg);
-    animation: fall 8s linear infinite;
     opacity: 0.8;
-    z-index: 5;
     box-shadow: 0px 0px 10px 5px rgba(255, 105, 180, 0.6);
 }
 
-.falling-heart::before,
-.falling-heart::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ff69b4;
-    border-radius: 50%;
-}
-
-.falling-heart::before {
-    top: -10px;
-    left: 0;
-}
-.falling-heart::after {
-    left: 10px;
-    top: 0;
-}
-
-/* Touch heart animation */
-.touch-heart {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: #ff69b4;
-    transform: rotate(45deg);
-    opacity: 0.8;
-    animation: touchHeartAnimation 1s ease forwards;
-    box-shadow: 0px 0px 10px 5px rgba(255, 105, 180, 0.6);
-    z-index: 15;
-}
-
-.touch-heart::before,
-.touch-heart::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: #ff69b4;
-    border-radius: 50%;
-}
-
-.touch-heart::before {
-    top: -12px;
-    left: 0;
-}
-
-.touch-heart::after {
-    left: 12px;
-    top: 0;
-}
-
-/* Keyframe animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
 @keyframes fall {
-    0% {
-        transform: translateX(0) translateY(-100vh) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(50px) translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
+    0% { transform: translateX(0) translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateX(50px) translateY(100vh) rotate(360deg); opacity: 0; }
 }
 
 @keyframes touchHeartAnimation {
