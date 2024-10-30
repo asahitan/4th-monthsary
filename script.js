@@ -1,68 +1,62 @@
-// Toggle Dark Mode
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
 
-// Toggle Music On/Off
-const backgroundMusic = document.getElementById("background-music");
-let isPlaying = false;
-
 function toggleMusic() {
-    if (isPlaying) {
-        backgroundMusic.pause();
+    const music = document.getElementById("background-music");
+    if (music.paused) {
+        music.play();
     } else {
-        backgroundMusic.play();
+        music.pause();
     }
-    isPlaying = !isPlaying;
 }
 
-// Display Music Selection Modal
 function showMusicSelection() {
-    document.getElementById("music-selection").style.display = "block";
+    const musicSelection = document.getElementById("music-selection");
+    musicSelection.style.display = "block";
 }
 
-// Hide Music Selection Modal
+function changeMusic(musicId) {
+    document.querySelectorAll("audio").forEach(audio => audio.pause());
+    const selectedMusic = document.getElementById(musicId);
+    selectedMusic.play();
+    document.getElementById("background-music").src = selectedMusic.src;
+    closeMusicSelection();
+}
+
 function closeMusicSelection() {
     document.getElementById("music-selection").style.display = "none";
 }
 
-// Change Background Music
-function changeMusic(option) {
-    const selectedMusic = document.getElementById(option);
-    backgroundMusic.src = selectedMusic.src;
-    backgroundMusic.play();
-    closeMusicSelection();
+function createFallingHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("falling-heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }, 500);
 }
 
-// Toggle Menu Visibility
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-}
+createFallingHearts();
 
-// Create Hearts on Click
 function createTouchHeart(event) {
     const touchHeart = document.createElement("div");
     touchHeart.classList.add("touch-heart");
-    touchHeart.style.left = `${event.pageX}px`;
-    touchHeart.style.top = `${event.pageY}px`;
+    touchHeart.style.left = event.pageX - 12 + "px";
+    touchHeart.style.top = event.pageY - 12 + "px";
     document.body.appendChild(touchHeart);
 
     setTimeout(() => {
         touchHeart.remove();
     }, 1000);
 }
-
-// Generate Falling Hearts
-function generateFallingHearts() {
-    const heart = document.createElement("div");
-    heart.classList.add("falling-heart");
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
-}
-
-setInterval(generateFallingHearts, 500);
