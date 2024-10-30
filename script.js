@@ -16,26 +16,47 @@ function toggleMusic() {
     }
 }
 
-// Create falling hearts
-function createFallingHeart() {
-    const heart = document.createElement("div");
-    heart.className = "falling-heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-
-    // Remove heart after animation
-    setTimeout(() => heart.remove(), 8000);
+function showMusicSelection() {
+    const musicSelection = document.getElementById("music-selection");
+    musicSelection.style.display = "block";
 }
-setInterval(createFallingHeart, 1000); // Falling hearts every second
 
-// Create heart on touch/click
+function changeMusic(musicId) {
+    document.querySelectorAll("audio").forEach(audio => audio.pause());
+    const selectedMusic = document.getElementById(musicId);
+    selectedMusic.play();
+    document.getElementById("background-music").src = selectedMusic.src;
+    closeMusicSelection();
+}
+
+function closeMusicSelection() {
+    document.getElementById("music-selection").style.display = "none";
+}
+
+function createFallingHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("falling-heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }, 500);
+}
+
 function createTouchHeart(event) {
-    const heart = document.createElement("div");
-    heart.className = "touch-heart";
-    heart.style.left = `${event.pageX - 12}px`;
-    heart.style.top = `${event.pageY - 12}px`;
-    document.body.appendChild(heart);
+    const touchHeart = document.createElement("div");
+    touchHeart.classList.add("touch-heart");
+    touchHeart.style.left = event.pageX - 12 + "px";
+    touchHeart.style.top = event.pageY - 12 + "px";
+    document.body.appendChild(touchHeart);
 
-    // Remove heart after animation
-    setTimeout(() => heart.remove(), 1000);
+    setTimeout(() => {
+        touchHeart.remove();
+    }, 1000);
 }
+
+createFallingHearts();
