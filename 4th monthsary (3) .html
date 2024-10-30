@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Monthsary, My Love!</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd1dc, #ff99cc);
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Dark mode styling */
+        body.dark-mode {
+            background: linear-gradient(135deg, #2e2e2e, #4e4e4e);
+            color: #e0e0e0;
+        }
+
+        /* Container for the main content */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Title styling with glow effect */
+        h1 {
+            font-family: 'Cursive', sans-serif;
+            font-size: 2.5em;
+            color: #ff69b4;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 105, 180, 0.5);
+        }
+
+        /* Paragraph text styling with glow effect */
+        p {
+            font-size: 1.2em;
+            color: #f5f5f5;
+            line-height: 1.6em;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Image styling */
+        .photo {
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Footer text with glow effect */
+        .footer {
+            font-size: 0.9em;
+            color: #ffe6e6;
+            margin-top: 30px;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Hamburger menu */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            font-size: 20px;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            z-index: 9;
+        }
+
+        .menu a {
+            color: #ff69b4;
+            margin: 20px 0;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Music selection modal styling */
+        .music-selection {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 11;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .music-selection button {
+            margin-top: 10px;
+            color: #ff69b4;
+            background-color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Falling hearts */
+        .falling-heart {
+            position: fixed;
+            top: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            transform: rotate(45deg);
+            animation: fall 8s linear infinite;
+            opacity: 0.8;
+            z-index: 5;
+            box-shadow: 0px 0px 10px 5px rgba(255, 105, 180, 0.6);
+        }
+
+        .falling-heart::before,
+        .falling-heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .falling-heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .falling-heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        /* Touch heart effect */
+        .touch-heart {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #ff69b4;
+            transform: rotate(45deg);
+            opacity: 0.8;
+            animation: touchHeartAnimation 1s ease forwards;
+            box-shadow: 0px 0px 10px 5px rgba(255, 105, 180, 0.6);
+            z-index: 15;
+        }
+
+        .touch-heart::before,
+        .touch-heart::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .touch-heart::before {
+            top: -12px;
+            left: 0;
+        }
+
+        .touch-heart::after {
+            left: 12px;
+            top: 0;
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateX(0) translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(50px) translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes touchHeartAnimation {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body onclick="createTouchHeart(event)">
+    <button class="menu-toggle" onclick="toggleMenu()">🥀</button>
+
+    <div class="menu" id="menu">
+        <a onclick="toggleDarkMode()">Dark Mode</a>
+        <a onclick="toggleMusic()">Play/Pause Music</a>
+        <a onclick="showMusicSelection()">Select Music</a>
+        <a onclick="toggleMenu()">Close Menu</a>
+    </div>
+
+    <!-- Background Music Options -->
+    <audio id="background-music" loop>
+        <source src="song1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music-option-1" loop>
+        <source src="song1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music-option-2" loop>
+        <source src="song2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="music-option-3" loop>
+        <source src="song3.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>Happy 4th Monthsary, My Wife!🥀</h1>
+        <p>Asawa koo, finally 4th months of love, gusto kulng sabihin na salamat Kasi nag stay ka sakin ng ganon katagal, thank you kasi natitiis mo yung gantong ugali ko thank u for being understanding love, I know namn na napapagod ka din sa ugali ko but pls choose to stay wifeyy, sana kayanin natin lahat, sana mas tumagal pa tayo, stay strong to us asawa ko, hope na sana mag stay kana sakin forever asawa ko at mag stay din ako sa'yo forever asawa ko until my last breath, I found the love in you, and no different kind of love can change that because your the one for me, your always be my fav person asawa ko, alagaan mu sarili mo habang hindi pa tayo mag kasama wifeyy ko at wag papalipas ng gutom, please take care of yourself wifeyy ko, mag sstay ako sayo habang buhay wifeyy, sana ganon ka din, always remember na palaging ikaw yung pahinga ko, tahanan at mundo ko, ikaw po palagi wifeyy koo, sana ako lang din wifeyy ko, sana magtagal pa tayo wifeyy ko, sana wag mo po ako iwan, sana kahit anong pag subok dumating satin walang iwanan, sana walang sukuan, sana din po di ka po mag sawa na mahalin at intindihin po ugali ko na minsan makulit at hindi makaintindi, I'm grateful na naging girlfriend kita wifeyy koo kaya iintindihin kita habang nabubuhay ako, mahal na mahal po kita ng sobra hinding-hindi po kita iiwan kahit na anong mangyari kahit gaano pa kahirap dumaaan satin, never kita iiwan kasi ikaw at ikaw lang gusto ko, I'm scared to lose you, thank you po sa walang sawa na pag mamahal po sakin kahit minsan makulit ako at hindi makaintindi at naiinis pa po kita, thank you po sa pag intindi po sakin wifeyy ko, pero I'm trying to be a best boyfriend po sa'yo asawa ko. Sana walang mag bago satin stay strong lang asawa ko. Basta tiwala lang kaya natin to mahal na mahal kita ng maraming marami pa sa marami at mag iingat ka po palagi wifeyy ko at mag iingat din po ako para sayo aking wifeyy ko, i love you so much more asawa ko 💖 mahal na mahal po kita ng sobra-sobra 💕 Mwaaaah Mwaaaah Mwaaaah😘 Happy Monthsary ulit asawa koo stay strong to us asawa koo</p>
+        <p>You are my safe place, my world, and my everything. Happy monthsary, and here’s to many more with you by my side. I love you asawa ko 💖, always and forever💕.</p>
+        <p>I’m grateful for every moment we share, for every laugh, every memory, and even our little fights. Through all of it, my love only grows stronger. I can’t wait to spend many more months, years, and lifetimes with you.</p>
+        <p>The love I have for you can not be expressed by more words.</p>
+        
+        <!-- Replace the src with your own image URL -->
+        <img class="photo" src="https://i.postimg.cc/bJ6VsWx3/1730278298762.jpg" alt="Our special memory">
+        
+        <p>You are my safe place, my world, and my everything. Happy monthsary, and here's to many more with you by my side. I love you, always and forever.</p>
+        
+        <div class="footer">With all my love, <br> [Your Name]</div>
+    </div>
+
+    <!-- Music Selection Modal -->
+    <div class="music-selection" id="music-selection">
+        <p>Select a Song:</p>
+        <button onclick="changeMusic('music-option-1')">Song 1</button>
+        <button onclick="changeMusic('music-option-2')">Song 2</button>
+        <button onclick="changeMusic('music-option-3')">Song 3</button>
+        <button onclick="closeMusicSelection()">Close</button>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById("background-music");
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        function showMusicSelection() {
+            const musicSelection = document.getElementById("music-selection");
+            musicSelection.style.display = "block";
+        }
+
+        function changeMusic(musicId) {
+            document.querySelectorAll("audio").forEach(audio => audio.pause());
+            const selectedMusic = document.getElementById(musicId);
+            selectedMusic.play();
+            document.getElementById("background-music").src = selectedMusic.src;
+            closeMusicSelection();
+        }
+
+        function closeMusicSelection() {
+            document.getElementById("music-selection").style.display = "none";
+        }
+
+        // Falling hearts effect
+        function createFallingHearts() {
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.classList.add("falling-heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 500);
+        }
+
+        createFallingHearts();
+
+        // Touch heart effect with page scroll handling
+        function createTouchHeart(event) {
+            const touchHeart = document.createElement("div");
+            touchHeart.classList.add("touch-heart");
+            touchHeart.style.left = event.pageX - 12 + "px";
+            touchHeart.style.top = event.pageY - 12 + "px";
+            document.body.appendChild(touchHeart);
+
+            setTimeout(() => {
+                touchHeart.remove();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
